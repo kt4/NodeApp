@@ -1,6 +1,8 @@
-FROM node:5.8
-WORKDIR /nodeapp
-ADD ./nodeapp
+FROM node:10.20
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY package*.json /usr/src/app/
+COPY . /usr/src/app
 RUN npm install
-expose 4000
-cmd npm start
+EXPOSE 4000
+CMD [ "npm", "start" ]
